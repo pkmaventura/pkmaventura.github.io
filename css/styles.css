@@ -1,0 +1,310 @@
+/* Para definir variables  */
+:root {
+
+    --blanco: #ffffff;
+    --ocsuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+
+}
+
+/* Esta parte (html, Body), son buenas practicas para adaptar a cualquier resolucion */       
+html {
+    font-size: 62.5%;  
+    box-sizing: border-box;   /* CSS para el Box Model (Hack) */
+    scroll-snap-type: y mandatory;  /* Scroll de pantalla, tipo Apple (Hack)  Vertical (y) */
+}
+/* apply a natural box layout model to all elements, but allowing components to change */
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  /* Esta parte (html, Body), son buenas practicas para adaptar a cualquier resolucion */      
+body {
+    font-size: 16px;  /* 1 rem = 10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );  /* color degradado en la pantalla. */
+}  
+
+/* Este selector de h1, cambiara todos los h1 de la pagina. */
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem; 
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1 {
+    text-align: left;
+}
+
+h2,h3 {
+    text-align: center;
+}
+
+/* para la etiqueta span dentro del titulo principal h1  (v18) */  
+.Titulo span { 
+    font-size: 2rem;   
+}
+
+/* Selector de clase (.contenedor) para centrar contenido.  */
+.contenedor {
+    max-width: 120rem;
+    /* Aca se resumen las 4 posiciones top, right, botton, left */
+    margin: 0 auto;
+}
+/* */
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none; /* Quita linea debajo */
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;  /* Esquinas redondeadas */
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+/* Responsive Web (Adaptar a distintos dispositivos) , con Media Queries
+   Solo se ejecuta en esta condicion de (768px) para arriba . */
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+    }
+}
+/* Regresa la mano sobre los botones */
+.boton:hover {
+    cursor: pointer;
+}
+
+/* codigo de cssmatic , para sombreado degradado de fondo en Main */
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.54);
+    background-color: var(--blanco) ;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Clase de 1 sola Propiedad (Utility First v27) */
+.w-sm-100 {
+    width: 100%;
+}
+
+/* Este media query lleva el boton a alinear a la derecha, cuando pantalla > 768px */
+@media (min-width: 768px) {
+    .w-sm-100{
+        width: auto;
+    }
+}
+
+/* Para alinear a la derecha el boton Enviar. (v43) */
+.flex {
+    display: flex; /* Habilita FlexBox */
+}
+
+/* Para alinear a la derecha el boton Enviar. (v43) */
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* */
+.nav-bg {
+    background-color: var(--secundario) ;
+}
+
+.navegacion-principal {
+    display: flex;   /* Habilita Flexbox  (v26) */
+    flex-direction: column;  /* muestra de arriba hacia abajo */
+    
+}
+/* Responsive Webs and Media Queries. (V 29,30) */
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;  /* Espacio en la navegacion */
+    }
+}
+
+/* para la etiqueta "a" dentro de la clase: navegacion-principal */
+.navegacion-principal a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem; 
+}
+
+/* Evento que se dispara al colocar mouse over */
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--ocsuro);
+}
+
+/* Imagen de Fondo. el (..) sale de la carpeta CSS, para ir a otra carpeta */
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;           /* Para que no se repita la imagen en el fondo. */
+    background-size: cover;
+    height: 410px;
+    /* padding: 20px; */
+    position: relative;  /* Padre con posicion relativa */
+    margin-bottom: 2rem;
+}
+
+/* Hijo, se posiciona de forma absoluta */
+.contenido-hero{
+    position:absolute;
+    background-color: rgba(0,0,0, .7);
+    background-color: rgb( 0 0 0 / 70%);   /* Sintaxis nueva, sin mucho soporte */
+    width: 100%;
+    height: 100%;
+
+    /* Para Alinear Vertical y Horizontalmente. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  */
+.contenido-hero h2, 
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+/* Scroll de pantalla, tipo Apple (Hack)  Vertical (y) */
+.servicios , 
+.navegacion-principal , 
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+/* CSS Grid (Tablas Felxibles),  para la parte de Servicios (v39) */
+@media(min-width: 786px) {
+
+    .servicios {
+        display: grid;
+     /* grid-template-columns: 300px 300px;
+        grid-template-rows: 200px 800px;   */
+    
+     /* grid-template-columns: 1fr 1fr 1fr; */
+    
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 5rem;
+    }
+
+}
+
+/* */
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+   color: var(--secundario); 
+   font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+/* Clase para los Iconos de Servicio */
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100%); /* Nueva funcion CSS, que utiliza el valor mas pequeno. */
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Elimina el borde del Formulario. */
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;  /* Mayusculas al texto */
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    /* pseudo selector: Array que inicia en 1 */
+    .campo:nth-child(3) , 
+    .campo:nth-child(4) {
+        grid-column: 1/3;
+ 
+    }
+
+}
+
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+/*
+.campo input[type="text"] ,
+.campo input[type="tel"]
+{
+    background-color: red;
+}
+*/
+
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.footer {
+    text-align: center;
+}
